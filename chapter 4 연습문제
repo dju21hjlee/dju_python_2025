@@ -1,0 +1,165 @@
+#4.4
+  print("맛나 식당에 오신 것을 환영합니다. 메뉴는 다음과 같습니다.")
+print("- 햄버거(입력 b)")
+print("- 치킨(입력 c)")
+print("- 피자(입력 p)")
+
+while True:
+    ch = input("메뉴를 선택하세요(알파벳 b, c, p 입력) : ").lower()
+    if ch == 'b':
+        print("햄버거를 선택하였습니다.")
+        break
+    elif ch == 'c':
+        print("치킨을 선택하였습니다.")
+        break
+    elif ch == 'p':
+        print("피자를 선택하였습니다.")
+        break
+    else:
+        print("메뉴를 다시 입력하세요:")
+
+#4.6
+  n = int(input("숫자를 입력하세요 : "))
+
+for i in range(1, n+1):
+    # i개의 별을 한 줄에 찍고 줄바꿈
+    print('*' * i)
+
+  #4.7
+n = int(input("숫자를 입력하세요 : "))
+
+if n < 2:
+    print(f"{n}는(은) 소수가 아닙니다.")
+else:
+    # 2로 나눠지는지 먼저 검사
+    if n != 2 and n % 2 == 0:
+        is_prime = False
+    else:
+        is_prime = True
+        # 3,5,7,... √n까지 홀수만 검사
+        m = int(n**0.5)
+        for d in range(3, m+1, 2):
+            if n % d == 0:
+                is_prime = False
+                break
+
+    if is_prime:
+        print(f"{n}는(은) 소수입니다.")
+    else:
+        print(f"{n}는(은) 소수가 아닙니다.")
+
+#4.8
+  def is_prime(n):
+    if n < 2:
+        return False
+    if n != 2 and n % 2 == 0:
+        return False
+    m = int(n**0.5)
+    for d in range(3, m+1, 2):
+        if n % d == 0:
+            return False
+    return True
+
+for num in range(2, 13):
+    if is_prime(num):
+        print(f"{num} : 소수")
+    else:
+        print(f"{num} : 합성수")
+#4.9
+  n = int(input("숫자를 입력하세요 : "))
+total = 0
+for i in range(1, n+1):
+    total += i*i
+print(f"결과는 {total}입니다.")
+
+#4.10
+  n = int(input("숫자를 입력하세요 : "))
+s = 0.0
+for i in range(1, n+1):
+    s += 1 / (i*i)
+print(f"결과는 {s}입니다.")
+
+#4.11
+  depth = 30
+up, down = 7, 5
+pos = 0
+day = 0
+
+while True:
+    day += 1
+    pos += up
+    if pos >= depth:
+        break
+    pos -= down
+
+print(f"{day}일째 되는 날 탈출합니다.")
+
+  #4.13
+  armstrongs = []
+for num in range(100, 1000):
+    d1 = num // 100
+    d2 = (num // 10) % 10
+    d3 = num % 10
+    if d1**3 + d2**3 + d3**3 == num:
+        armstrongs.append(num)
+
+print("세 자리의 암스트롱 수 :", *armstrongs)
+
+  #4.14
+  n = input("정수를 입력하세요 : ")
+if n == n[::-1]:
+    print(f"{n}은(는) 거꾸로 정수입니다.")
+else:
+    print(f"{n}은(는) 거꾸로 정수가 아닙니다.")
+
+#4.15
+  capacity = 500
+tank = capacity
+
+while True:
+    delta = int(input("충전 또는 사용한 연료를 +/- 기호와 함께 입력하시오: "))
+    tank += delta
+    print(f"현재 탱크양은 {tank} 입니다.")
+    if tank < capacity * 0.1:
+        print("경고 : 연료가 10% 미만이니 충전하세요!")
+        break
+#4.16
+  print("1) 덧셈 2) 뺄셈 3) 곱셈 4) 나눗셈")
+op = input("어떤 연산을 원하는지 번호를 입력하세요: ")
+
+if op in ('1','2','3','4'):
+    a, b = map(float, input("연산을 원하는 숫자 두 개를 입력하세요: ").split())
+    if op == '1':
+        print(f"{a} + {b} = {a+b}")
+    elif op == '2':
+        print(f"{a} - {b} = {a-b}")
+    elif op == '3':
+        print(f"{a} * {b} = {a*b}")
+    else:  # op == '4'
+        if b != 0:
+            print(f"{a} / {b} = {a/b}")
+        else:
+            print("0으로 나눌 수 없습니다.")
+else:
+    print("잘못 입력하였습니다.")
+
+  #4.17
+def sum_proper_divisors(n):
+    if n <= 1:
+        return 0
+    total = 1
+    m = int(n**0.5)
+    for d in range(2, m+1):
+        if n % d == 0:
+            total += d
+            other = n // d
+            if other != d:
+                total += other
+    return total
+
+# 미리 합약수 합 계산
+div_sum = {i: sum_proper_divisors(i) for i in range(1, 20001)}
+
+for a, b in div_sum.items():
+    if b <= 20000 and b != a and div_sum.get(b, 0) == a:
+        print(f"{a}의 친화수 {b}")
