@@ -1,0 +1,22 @@
+#5.20
+def fibo(n):
+    if n == 0 or n == 1:
+        return 1
+    return fibo(n-1) + fibo(n-2)
+
+if __name__ == "__main__":
+    for i in range(16):
+        print(f"fibo({i:2d}) = {fibo(i):5d}")
+
+#5.21
+def format_birth(yyMMdd: str) -> str:
+    yyMMdd = yyMMdd.zfill(6)
+    yy2 = int(yyMMdd[:2])
+    mm = int(yyMMdd[2:4])
+    dd = int(yyMMdd[4:6])
+    yy4 = 1900 + yy2 if yy2 >= 50 else 2000 + yy2
+    return f"{yy4}년 {mm}월 {dd}일"
+
+if __name__ == "__main__":
+    rec = input("생년월일(YYMMDD)을 입력하세요: ")
+    print(format_birth(rec))
