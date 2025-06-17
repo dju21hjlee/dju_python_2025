@@ -1,0 +1,74 @@
+ #3.2
+name = input("이름을 입력하세요: ")
+height = int(input("키를 입력하세요(단위 cm): "))
+
+if height >= 140:
+    print(f"{name}님은 놀이기구를 탈 수 있습니다.")
+else:
+    print(f"{name}님은 놀이기구를 탈 수 없습니다.")
+
+#3.4
+age = int(input("나이를 입력하세요: "))
+
+if age >= 20:
+    print("Adult")
+elif age >= 10:     # 10 <= age < 20
+    print("Youth")
+else:               # age < 10
+    print("Kid")
+
+#3.5
+a, b = map(int, input("두 정수를 입력하세요: ").split())
+
+if a <= b:
+    print(a, b)
+else:
+    print(b, a)
+
+#3.7
+game_score = int(input("게임점수를 입력하세요: "))
+
+if game_score >= 1000:
+    print("고수입니다.")
+else:
+    print("입문자입니다.")
+
+#3.10
+a, b = map(int, input("두 정수를 입력하세요: ").split())
+
+if b != 0 and a % b == 0:
+    print(f"{a}는(은) {b}의 배수입니다.")
+else:
+    print(f"{a}는(은) {b}의 배수가 아닙니다.")
+
+#3.11
+winning = {2, 3, 9}
+nums = set(map(int, input("세 복권번호를 입력하세요: ").split()))
+cnt = len(nums & winning)
+
+if cnt == 3:
+    print("상금 1억 원")
+elif cnt == 2:
+    print("상금 1천만 원")
+elif cnt == 1:
+    print("상금 1만 원")
+else:
+    print("다음 기회에...")
+
+#3.12
+x, y = map(int, input("점의 좌표 x, y를 입력하세요: ").split())
+
+if x*x + y*y <= 5*5:
+    print("원의 내부에 있음")
+else:
+    print("원의 외부에 있음")
+
+#3.14
+ch = input("알파벳을 입력하세요: ").lower()
+
+if ch in ('a', 'e', 'i', 'o', 'u'):
+    print(f"{ch} (은)는 모음입니다.")
+else:
+    print(f"{ch} (은)는 자음입니다.")
+
+
